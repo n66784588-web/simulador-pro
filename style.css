@@ -1,1 +1,63 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
+header {
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#contenedor {
+  display: flex;
+  height: 70vh;
+}
+
+/* MENU */
+#menu {
+  width: 150px;
+  background: #f4f4f4;
+  padding: 10px;
+}
+
+#menu button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* VISOR */
+#visor {
+  flex: 1;
+}
+
+#visor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PANEL */
+#panel {
+  width: 250px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+#panel img {
+  width: 100%;
+}
+
+/* CATALOGO */
+#catalogo {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+#catalogo img {
+  width: 120px;
+  margin-right: 10px;
+  cursor: pointer;
+}

@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header>
+  <h2>TU MARCA</h2>
+</header>
+
+<div id="contenedor">
+
+  <!-- MENU -->
+  <div id="menu">
+    <button onclick="cambiarAmbiente('sala')">Sala</button>
+    <button onclick="cambiarAmbiente('baño')">Baño</button>
+    <button onclick="cambiarAmbiente('recamara')">Recámara</button>
+    <button onclick="cambiarAmbiente('terraza')">Terraza</button>
+    <button onclick="cambiarAmbiente('fachada')">Fachada</button>
+  </div>
+
+  <!-- VISOR -->
+  <div id="visor">
+    <img id="ambiente" src="img/habitaciones/sala.jpg">
+  </div>
+
+  <!-- PANEL DERECHO -->
+  <div id="panel">
+    <img id="preview" src="img/pisos/p1.jpg">
+    <h3>Bremen Beige</h3>
+    <p>60x60 cm</p>
+    <button>Agregar</button>
+  </div>
+
+</div>
+
+<!-- CATALOGO -->
+<div id="catalogo">
+  <img src="img/pisos/p1.jpg">
+  <img src="img/pisos/p2.jpg">
+  <img src="img/pisos/p3.jpg">
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

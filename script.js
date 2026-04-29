@@ -1,4 +1,3 @@
-// CAMBIAR AMBIENTE
 function cambiarAmbiente(tipo) {
   document.getElementById("ambiente").src =
     `img/habitaciones/${tipo}.jpg`;
@@ -6,37 +5,43 @@ function cambiarAmbiente(tipo) {
 
 const catalogo = document.getElementById("catalogo");
 
-// FUNCIÓN PARA MOSTRAR PRODUCTOS
+// MOSTRAR PRODUCTOS
 function mostrarProductos(lista) {
   catalogo.innerHTML = "";
 
   lista.forEach(p => {
-    const img = document.createElement("img");
+    const card = document.createElement("div");
+    card.classList.add("producto");
 
+    const img = document.createElement("img");
     img.src = `img/pisos/${p.marca}/${p.nombre}.jpg`;
+
+    const nombre = document.createElement("p");
+    nombre.innerText = p.nombre;
 
     img.onclick = () => {
       document.getElementById("preview").src = img.src;
       document.getElementById("nombre").innerText = p.nombre;
 
-      // aplicar piso
       document.getElementById("piso").style.backgroundImage =
         `url(${img.src})`;
     };
 
-    catalogo.appendChild(img);
+    card.appendChild(img);
+    card.appendChild(nombre);
+
+    catalogo.appendChild(card);
   });
 }
 
-// FILTRO POR MARCA
+// FILTRO
 function filtrarMarca(marca) {
   if (marca === "todas") {
     mostrarProductos(productos);
   } else {
-    const filtrados = productos.filter(p => p.marca === marca);
-    mostrarProductos(filtrados);
+    mostrarProductos(productos.filter(p => p.marca === marca));
   }
 }
 
-// CARGA INICIAL
+// INICIO
 mostrarProductos(productos);

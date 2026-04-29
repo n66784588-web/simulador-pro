@@ -3,30 +3,18 @@ body {
   font-family: Arial;
 }
 
-header {
-  text-align: center;
-  padding: 10px;
-}
-
 #contenedor {
   display: flex;
 }
 
-/* MENU */
 #menu {
   width: 150px;
-  padding: 10px;
 }
 
 #menu button {
+  display: block;
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-/* VISOR */
-#visor {
-  flex: 1;
+  margin: 5px 0;
 }
 
 #visor img {
@@ -35,25 +23,16 @@ header {
   object-fit: cover;
 }
 
-/* PANEL */
 #panel {
   width: 250px;
-  padding: 10px;
 }
 
-#panel img {
-  width: 100%;
-}
-
-/* CATALOGO */
 #catalogo {
   display: flex;
   overflow-x: auto;
-  padding: 10px;
 }
 
 #catalogo img {
   width: 120px;
-  margin-right: 10px;
-  cursor: pointer;
+  margin: 10px;
 }

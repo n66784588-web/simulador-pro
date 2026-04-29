@@ -23,7 +23,12 @@ function mostrarProductos(lista) {
       document.getElementById("preview").src = img.src;
       document.getElementById("nombre").innerText = p.nombre;
 
+      // PISO
       document.getElementById("piso").style.backgroundImage =
+        `url(${img.src})`;
+
+      // MURO
+      document.getElementById("muro").style.backgroundImage =
         `url(${img.src})`;
     };
 

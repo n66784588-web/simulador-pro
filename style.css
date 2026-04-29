@@ -1,54 +1,26 @@
-/* RESET */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-/* HEADER */
-header {
-  text-align: center;
-  padding: 10px;
-}
-
-/* CONTENEDOR PRINCIPAL */
-#contenedor {
-  display: flex;
-}
-
-/* MENU IZQUIERDO */
-#menu {
-  width: 150px;
-  padding: 10px;
-}
-
-#menu button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  cursor: pointer;
-}
-
-/* VISOR */
+/* CONTENEDOR CORRECTO */
 #visor {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ESCENA */
 #escena {
   position: relative;
-  width: 100%;
+  width: 90%;
+  max-width: 900px;
 }
 
-/* IMAGEN DE FONDO (HABITACIÓN) */
+/* IMAGEN */
 #ambiente {
   width: 100%;
-  height: 100vh;
-  object-fit: cover;
+  height: auto; /* 🔥 IMPORTANTE: evita deformación */
   display: block;
 }
 
-/* CAPA DEL PISO (AQUÍ ESTÁ LA MAGIA) */
+/* PISO (CORREGIDO) */
 #piso {
   position: absolute;
 
@@ -56,56 +28,14 @@ header {
   left: 0;
 
   width: 100%;
-  height: 35%;
+  height: 32%;
 
   background-repeat: repeat;
   background-size: 300px auto;
 
-  /* 👇 CLAVE */
-  transform: perspective(1000px) rotateX(65deg);
+  transform: perspective(900px) rotateX(65deg);
   transform-origin: bottom;
 
+  pointer-events: none;
   opacity: 0.95;
-}
-
-/* PANEL DERECHO */
-#panel {
-  width: 250px;
-  padding: 10px;
-}
-
-#panel img {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-/* CATALOGO */
-#catalogo {
-  display: flex;
-  overflow-x: auto;
-  padding: 10px;
-  background: #f5f5f5;
-}
-
-#catalogo img {
-  width: 120px;
-  margin-right: 10px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#catalogo img:hover {
-  transform: scale(1.05);
-}
-
-/* FILTROS (OPCIONAL SI YA LOS USAS) */
-#filtros {
-  padding: 10px;
-  text-align: center;
-}
-
-#filtros button {
-  margin: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
 }

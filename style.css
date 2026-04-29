@@ -25,6 +25,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #escena {
   position: relative;
   width: 90%;
@@ -35,7 +36,6 @@ body {
 #ambiente {
   width: 100%;
   height: auto;
-  display: block;
 }
 
 /* ===== MURO ===== */
@@ -44,11 +44,10 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 55%; /* ajustable */
+  height: 55%;
 
   background-repeat: repeat;
   background-size: 300px auto;
-
   opacity: 0.9;
 }
 
@@ -58,7 +57,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 45%; /* 🔥 MÁS GRANDE */
+  height: 45%;
 
   background-repeat: repeat;
   background-size: 300px auto;
@@ -117,11 +116,12 @@ body {
 
 .producto img {
   width: 100%;
-  height: 100px;
-  object-fit: cover;
+  height: 110px;
+  object-fit: cover; /* 🔥 evita deformación */
   border-radius: 8px;
 }
 
 .producto p {
   font-size: 12px;
 }
+

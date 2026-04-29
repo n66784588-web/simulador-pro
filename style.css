@@ -51,21 +51,18 @@ header {
 /* CAPA DEL PISO (AQUÍ ESTÁ LA MAGIA) */
 #piso {
   position: absolute;
+
   bottom: 0;
   left: 0;
+
   width: 100%;
-  height: 38%; /* ajusta entre 30% y 45% */
+  height: 35%;
 
   background-repeat: repeat;
-
-  /* 👇 ESCALA REALISTA (AJUSTABLE) */
   background-size: 300px auto;
 
-  /* 👇 MEJORA VISUAL */
-  image-rendering: auto;
-
-  /* 👇 EFECTO PROFESIONAL */
-  transform: perspective(900px) rotateX(60deg);
+  /* 👇 CLAVE */
+  transform: perspective(1000px) rotateX(65deg);
   transform-origin: bottom;
 
   opacity: 0.95;

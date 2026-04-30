@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Simulador PRO</title>
+  <title>Simulador</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,43 +14,49 @@
 
 <div id="contenedor">
 
-  <!-- MENU -->
+  <!-- MENU IZQUIERDO -->
   <div id="menu">
     <button onclick="cambiarAmbiente('sala')">Sala</button>
-    <button onclick="cambiarAmbiente('bano')">Baño</button>
+    <button onclick="cambiarAmbiente('baño')">Baño</button>
     <button onclick="cambiarAmbiente('recamara')">Recámara</button>
     <button onclick="cambiarAmbiente('terraza')">Terraza</button>
     <button onclick="cambiarAmbiente('fachada')">Fachada</button>
   </div>
 
-  <!-- VISOR -->
-  <div id="visor">
-    <div id="escena">
+  <!-- ESCENA -->
+  <div id="escena">
 
-      <!-- FOTO REAL -->
-      <img id="ambiente" src="img/habitaciones/sala.jpg">
+    <!-- IMAGEN BASE -->
+    <img id="ambiente" src="img/habitaciones/sala.jpg">
 
-      <!-- CAPA PISO -->
-      <div id="piso"></div>
+    <!-- TEXTURA PISO -->
+    <div id="piso"></div>
 
-      <!-- CAPA MURO -->
-      <div id="muro"></div>
+    <!-- MÁSCARA -->
+    <img id="maskPiso" src="img/habitaciones/sala-mask.png">
 
-    </div>
   </div>
 
-  <!-- PANEL -->
+  <!-- PANEL DERECHO -->
   <div id="panel">
-    <img id="preview">
     <h3 id="nombre">Selecciona un modelo</h3>
-
-    <button onclick="aplicarPiso()">Aplicar a piso</button>
-    <button onclick="aplicarMuro()">Aplicar a muro</button>
+    <img id="preview">
   </div>
 
 </div>
 
-<!-- CATALOGO -->
+<!-- FILTRO DE MARCAS -->
+<div id="filtros">
+  <button onclick="filtrarMarca('todas')">Todas</button>
+  <button onclick="filtrarMarca('porcelanite')">Porcelanite</button>
+  <button onclick="filtrarMarca('nitropiso')">Nitropiso</button>
+  <button onclick="filtrarMarca('vitromex')">Vitromex</button>
+  <button onclick="filtrarMarca('daltile')">Daltile</button>
+  <button onclick="filtrarMarca('benadresa')">Benadresa</button>
+  <button onclick="filtrarMarca('mise')">Mise</button>
+</div>
+
+<!-- CATÁLOGO -->
 <div id="catalogo"></div>
 
 <script src="data.js"></script>

@@ -29,6 +29,7 @@ body {
 #escena {
   position: relative;
   width: 900px;
+  overflow: hidden;
 }
 
 /* IMAGEN BASE */
@@ -37,35 +38,43 @@ body {
   display: block;
 }
 
-/* 🔥 MURO (NO INVADIR) */
-#muro {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-
-  background-repeat: repeat;
-  background-size: 250px;
-
-  opacity: 0.85;
-}
-
-/* 🔥 PISO BIEN POSICIONADO */
+/* 🔥 PISO REALISTA */
 #piso {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 35%;
+  left: 5%;
+
+  width: 90%;
+  height: 45%;
 
   background-repeat: repeat;
-  background-size: 250px;
+  background-size: 600px;
 
   transform: perspective(1000px) rotateX(65deg);
   transform-origin: bottom;
 
-  opacity: 0.95;
+  opacity: 0.9;
+
+  /* 🔥 BORDE DIFUMINADO (CLAVE PRO) */
+  mask-image: linear-gradient(to top, black 70%, transparent 100%);
+}
+
+/* 🔥 MURO REAL */
+#muro {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 40%;
+
+  background-repeat: repeat;
+  background-size: 500px;
+
+  opacity: 0.85;
+
+  /* 🔥 DIFUMINADO */
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 /* PANEL */
@@ -78,7 +87,7 @@ body {
   width: 100%;
 }
 
-/* 🔥 CATALOGO BONITO Y FIJO */
+/* 🔥 CATALOGO PRO */
 #catalogo {
   position: fixed;
   bottom: 0;
@@ -90,20 +99,20 @@ body {
   padding: 10px;
   overflow-x: auto;
 
-  background: white;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  background: #fff;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.15);
 }
 
 /* TARJETAS */
 .producto {
   min-width: 120px;
-  background: #fff;
+  background: white;
   border-radius: 10px;
   padding: 5px;
   text-align: center;
 }
 
-/* 🔥 EVITA DEFORMACIÓN */
+/* 🔥 IMAGENES SIN DEFORMAR */
 .producto img {
   width: 100%;
   height: 90px;

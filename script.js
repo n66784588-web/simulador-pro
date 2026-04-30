@@ -33,14 +33,18 @@ function mostrarProductos() {
   });
 }
 
-// 🔥 APLICAR SOLO AL PISO
+// APLICAR PISO
 function aplicarPiso() {
+  if (!seleccionActual) return;
+
   document.getElementById("piso").style.backgroundImage =
     `url(${seleccionActual})`;
 }
 
-// 🔥 APLICAR SOLO AL MURO
+// APLICAR MURO
 function aplicarMuro() {
+  if (!seleccionActual) return;
+
   document.getElementById("muro").style.backgroundImage =
     `url(${seleccionActual})`;
 }

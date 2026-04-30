@@ -32,7 +32,6 @@ const productos = [
     { nombre: "cantera-negro-30x60", marca: "nitropiso" },
     { nombre: "carrara-blanco-30x60", marca: "nitropiso" },
     { nombre: "carrara-blanco-60x60", marca: "nitropiso" },
-    { nombre: "casa-blanca-60x60", marca: "nitropiso" },
     { nombre: "castellon-44x44", marca: "nitropiso" },
     { nombre: "cedral-beige-33x33", marca: "nitropiso" },
     { nombre: "coban-44x44", marca: "nitropiso" },

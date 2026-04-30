@@ -5,7 +5,6 @@ function cambiarAmbiente(tipo) {
 
 const catalogo = document.getElementById("catalogo");
 
-// MOSTRAR PRODUCTOS
 function mostrarProductos(lista) {
   catalogo.innerHTML = "";
 
@@ -20,26 +19,25 @@ function mostrarProductos(lista) {
     nombre.innerText = p.nombre;
 
     img.onclick = () => {
-      document.getElementById("preview").src = img.src;
+      const ruta = img.src;
+
+      document.getElementById("preview").src = ruta;
       document.getElementById("nombre").innerText = p.nombre;
 
-      // PISO
+      // SOLO PISO
       document.getElementById("piso").style.backgroundImage =
-        `url(${img.src})`;
+        `url(${ruta})`;
 
-      // MURO
-      document.getElementById("muro").style.backgroundImage =
-        `url(${img.src})`;
+      // LIMPIA MURO
+      document.getElementById("muro").style.backgroundImage = "none";
     };
 
     card.appendChild(img);
     card.appendChild(nombre);
-
     catalogo.appendChild(card);
   });
 }
 
-// FILTRO
 function filtrarMarca(marca) {
   if (marca === "todas") {
     mostrarProductos(productos);
@@ -48,5 +46,4 @@ function filtrarMarca(marca) {
   }
 }
 
-// INICIO
 mostrarProductos(productos);

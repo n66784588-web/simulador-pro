@@ -1,52 +1,96 @@
-let seleccionActual = "";
-
-// CAMBIAR AMBIENTE
-function cambiarAmbiente(tipo) {
-  document.getElementById("ambiente").src =
-    `img/habitaciones/${tipo}.jpg`;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f4f4f4;
 }
 
-const catalogo = document.getElementById("catalogo");
-
-// MOSTRAR PRODUCTOS
-function mostrarProductos() {
-  catalogo.innerHTML = "";
-
-  productos.forEach(p => {
-
-    const card = document.createElement("div");
-    card.classList.add("producto");
-
-    const img = document.createElement("img");
-    const ruta = `img/pisos/${p.marca}/${p.nombre}.jpg`;
-    img.src = ruta;
-
-    img.onclick = () => {
-      seleccionActual = ruta;
-
-      document.getElementById("preview").src = ruta;
-      document.getElementById("nombre").innerText = p.nombre;
-    };
-
-    card.appendChild(img);
-    catalogo.appendChild(card);
-  });
+header {
+  text-align: center;
+  padding: 10px;
 }
 
-// APLICAR PISO
-function aplicarPiso() {
-  if (!seleccionActual) return;
-
-  document.getElementById("piso").style.backgroundImage =
-    `url(${seleccionActual})`;
+/* CONTENEDOR */
+#contenedor {
+  display: flex;
+  align-items: flex-start;
 }
 
-// APLICAR MURO
-function aplicarMuro() {
-  if (!seleccionActual) return;
-
-  document.getElementById("muro").style.backgroundImage =
-    `url(${seleccionActual})`;
+/* MENU */
+#menu {
+  width: 140px;
+  padding: 10px;
 }
 
-mostrarProductos();
+#menu button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* ESCENA */
+#escena {
+  position: relative;
+  width: 900px;
+  margin: 20px;
+}
+
+/* IMAGEN */
+#ambiente {
+  width: 100%;
+  display: block;
+}
+
+/* PISO (PROYECCIÓN) */
+#piso {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+
+  background-size: 300px;
+  background-repeat: repeat;
+  opacity: 0.9;
+}
+
+/* PANEL */
+#panel {
+  width: 200px;
+  padding: 10px;
+}
+
+/* FILTROS */
+#filtros {
+  text-align: center;
+  margin: 10px;
+}
+
+#filtros button {
+  margin: 5px;
+  padding: 6px 10px;
+}
+
+/* CATALOGO */
+#catalogo {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 15px;
+  background: white;
+}
+
+.item {
+  min-width: 120px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}

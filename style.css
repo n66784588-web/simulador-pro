@@ -12,7 +12,6 @@ header {
 
 #contenedor {
   display: flex;
-  height: 70vh;
 }
 
 /* MENU */
@@ -22,69 +21,74 @@ header {
 }
 
 #menu button {
-  display: block;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   padding: 8px;
 }
 
 /* ESCENA */
 #escena {
   position: relative;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 900px;
+  margin: 20px auto;
+  overflow: hidden;
 }
 
+/* IMAGEN BASE */
 #ambiente {
-  width: 90%;
-  max-height: 100%;
+  width: 100%;
+  display: block;
 }
 
-/* 🔥 PISO BIEN AJUSTADO */
+/* 🔥 PROYECCIÓN REAL DEL PISO */
 #piso {
   position: absolute;
-  bottom: 10%;
-  width: 70%;
-  height: 25%;
-  background-size: 200px;
-  opacity: 0.9;
-  pointer-events: none;
+  bottom: 0;
+  left: 5%;
+
+  width: 90%;
+  height: 40%;
+
+  background-repeat: repeat;
+  background-size: 220px;
+
+  transform: perspective(700px) rotateX(60deg);
+  transform-origin: bottom;
+
+  opacity: 0.95;
 }
 
 /* PANEL */
 #panel {
-  width: 200px;
+  width: 220px;
   padding: 10px;
 }
 
 /* FILTROS */
 #filtros {
   text-align: center;
-  padding: 10px;
+  margin: 10px;
 }
 
 #filtros button {
   margin: 5px;
   padding: 8px 12px;
-  cursor: pointer;
 }
 
 /* CATALOGO */
 #catalogo {
   display: flex;
-  overflow-x: auto;
-  padding: 10px;
   gap: 10px;
+  overflow-x: auto;
+  padding: 15px;
+  background: white;
 }
 
 .item {
   min-width: 120px;
   background: white;
-  padding: 5px;
   border-radius: 10px;
-  text-align: center;
+  padding: 10px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -97,5 +101,4 @@ header {
   width: 100%;
   height: 100px;
   object-fit: cover;
-  border-radius: 5px;
 }

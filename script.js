@@ -1,59 +1,53 @@
-let productosFiltrados = productos;
+const catalogo = document.getElementById("catalogo");
+const preview = document.getElementById("preview");
+const nombre = document.getElementById("nombre");
+const piso = document.getElementById("piso");
 
-/* CAMBIAR AMBIENTE */
-function cambiarAmbiente(tipo) {
-  document.getElementById("ambiente").src =
-    `img/habitaciones/${tipo}.jpg`;
-}
+let marcaActual = "todas";
 
-/* MOSTRAR CATÁLOGO */
-function mostrarCatalogo() {
-  const catalogo = document.getElementById("catalogo");
+// MOSTRAR PRODUCTOS
+function mostrarProductos() {
   catalogo.innerHTML = "";
 
-  productosFiltrados.forEach(p => {
+  productos.forEach(p => {
+    if (marcaActual === "todas" || p.marca === marcaActual) {
 
-    if (!p.imagen || !p.marca) return; // 🔥 evita undefined
+      const img = document.createElement("img");
 
-    let ruta = `img/pisos/${p.marca}/${p.imagen}`;
+      // 🔥 RUTA CLAVE
+      img.src = `img/productos/${p.nombre}.jpg`;
 
-    const div = document.createElement("div");
-    div.className = "item";
+      img.onerror = () => {
+        console.log("No se encontró:", img.src);
+      };
 
-    div.innerHTML = `
-      <img src="${ruta}" onerror="this.style.display='none'">
-      <p>${p.nombre}</p>
-    `;
+      img.onclick = () => seleccionarProducto(p);
 
-    div.onclick = () => aplicarPiso(ruta, p.nombre);
-
-    catalogo.appendChild(div);
+      catalogo.appendChild(img);
+    }
   });
 }
 
-/* FILTRO */
-function filtrarMarca(marca) {
-  if (marca === "todas") {
-    productosFiltrados = productos;
-  } else {
-    productosFiltrados = productos.filter(p => p.marca === marca);
-  }
+// SELECCIONAR PRODUCTO
+function seleccionarProducto(p) {
+  nombre.innerText = p.nombre;
 
-  mostrarCatalogo();
-}
+  const ruta = `img/productos/${p.nombre}.jpg`;
 
-/* APLICAR PISO */
-function aplicarPiso(ruta, nombre) {
-
-  const piso = document.getElementById("piso");
-
+  preview.src = ruta;
   piso.style.backgroundImage = `url(${ruta})`;
-  piso.style.backgroundRepeat = "repeat";
-  piso.style.backgroundSize = "220px";
-
-  document.getElementById("nombre").innerText = nombre;
-  document.getElementById("preview").src = ruta;
 }
 
-/* INICIO */
-mostrarCatalogo();
+// FILTRO
+function filtrarMarca(marca) {
+  marcaActual = marca;
+  mostrarProductos();
+}
+
+// CAMBIAR AMBIENTE
+function cambiarAmbiente(tipo) {
+  document.getElementById("ambiente").src = `img/habitaciones/${tipo}.jpg`;
+}
+
+// INICIO
+mostrarProductos();

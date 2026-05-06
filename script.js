@@ -1,12 +1,34 @@
-// CARGA INICIAL
 document.addEventListener("DOMContentLoaded", () => {
+  cambiarAmbiente("sala");
   mostrarProductos();
 });
 
+// 🔥 FUNCIÓN INTELIGENTE DE CARGA DE IMÁGENES
+function cargarImagen(img, base) {
+  const formatos = [".jpg", ".png", ".webp"];
+  let i = 0;
+
+  function intentar() {
+    if (i >= formatos.length) {
+      img.src = "img/no-image.jpg";
+      return;
+    }
+
+    img.src = base + formatos[i];
+    i++;
+
+    img.onerror = intentar;
+  }
+
+  intentar();
+}
+
 // CAMBIAR AMBIENTE
 function cambiarAmbiente(nombre) {
-  document.getElementById("ambiente").src =
-    `img/habitaciones/${nombre}.jpg`;
+  const img = document.getElementById("ambiente");
+  const base = `img/habitaciones/${nombre}`;
+
+  cargarImagen(img, base);
 }
 
 // MOSTRAR PRODUCTOS
@@ -20,13 +42,9 @@ function mostrarProductos(lista = productos) {
 
     const img = document.createElement("img");
 
-    // 🔥 RUTA PERFECTA
-    img.src = `img/productos/${p.marca}/${p.nombre}.jpg`;
+    const base = `img/productos/${p.marca}/${p.nombre}`;
 
-    // SI NO EXISTE LA IMAGEN
-    img.onerror = () => {
-      img.src = "img/no-image.jpg";
-    };
+    cargarImagen(img, base);
 
     img.onclick = () => seleccionarProducto(p);
 
@@ -37,14 +55,16 @@ function mostrarProductos(lista = productos) {
 
 // SELECCIONAR PRODUCTO
 function seleccionarProducto(p) {
+  const base = `img/productos/${p.marca}/${p.nombre}`;
+
   document.getElementById("nombre").innerText = p.nombre;
 
-  const ruta = `img/productos/${p.marca}/${p.nombre}.jpg`;
+  const preview = document.getElementById("preview");
+  cargarImagen(preview, base);
 
-  document.getElementById("preview").src = ruta;
-
+  // 🔥 para piso usamos jpg por compatibilidad
   document.getElementById("piso").style.backgroundImage =
-    `url('${ruta}')`;
+    `url('${base}.jpg')`;
 }
 
 // FILTRO

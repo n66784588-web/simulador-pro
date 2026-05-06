@@ -1,44 +1,59 @@
+let productosFiltrados = productos;
+
+/* CAMBIAR AMBIENTE */
 function cambiarAmbiente(tipo) {
   document.getElementById("ambiente").src =
     `img/habitaciones/${tipo}.jpg`;
 }
 
+/* MOSTRAR CATÁLOGO */
+function mostrarCatalogo() {
+  const catalogo = document.getElementById("catalogo");
+  catalogo.innerHTML = "";
+
+  productosFiltrados.forEach(p => {
+
+    if (!p.imagen || !p.marca) return; // 🔥 evita undefined
+
+    let ruta = `img/pisos/${p.marca}/${p.imagen}`;
+
+    const div = document.createElement("div");
+    div.className = "item";
+
+    div.innerHTML = `
+      <img src="${ruta}" onerror="this.style.display='none'">
+      <p>${p.nombre}</p>
+    `;
+
+    div.onclick = () => aplicarPiso(ruta, p.nombre);
+
+    catalogo.appendChild(div);
+  });
+}
+
+/* FILTRO */
+function filtrarMarca(marca) {
+  if (marca === "todas") {
+    productosFiltrados = productos;
+  } else {
+    productosFiltrados = productos.filter(p => p.marca === marca);
+  }
+
+  mostrarCatalogo();
+}
+
+/* APLICAR PISO */
 function aplicarPiso(ruta, nombre) {
-  document.getElementById("piso").style.backgroundImage =
-    `url(${ruta})`;
+
+  const piso = document.getElementById("piso");
+
+  piso.style.backgroundImage = `url(${ruta})`;
+  piso.style.backgroundRepeat = "repeat";
+  piso.style.backgroundSize = "220px";
 
   document.getElementById("nombre").innerText = nombre;
   document.getElementById("preview").src = ruta;
 }
 
-function cargarCatalogo(lista) {
-  const contenedor = document.getElementById("catalogo");
-  contenedor.innerHTML = "";
-
-  lista.forEach(p => {
-    const div = document.createElement("div");
-    div.classList.add("item");
-
-    div.innerHTML = `
-      <img src="img/pisos/${p.marca}/${p.imagen}">
-      <p>${p.nombre}</p>
-    `;
-
-    div.onclick = () => {
-      aplicarPiso(`img/pisos/${p.marca}/${p.imagen}`, p.nombre);
-    };
-
-    contenedor.appendChild(div);
-  });
-}
-
-function filtrarMarca(marca) {
-  if (marca === "todas") {
-    cargarCatalogo(productos);
-  } else {
-    const filtrados = productos.filter(p => p.marca === marca);
-    cargarCatalogo(filtrados);
-  }
-}
-
-cargarCatalogo(productos);
+/* INICIO */
+mostrarCatalogo();

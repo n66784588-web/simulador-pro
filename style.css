@@ -3,25 +3,30 @@ body {
   margin: 0;
 }
 
+/* HEADER */
 header {
   background: black;
   color: white;
   padding: 10px;
 }
 
+/* CONTENEDOR */
 #contenedor {
   display: flex;
   height: 60vh;
 }
 
+/* MENU */
 #menu {
   width: 150px;
   padding: 10px;
 }
 
+/* ESCENA */
 #escena {
   position: relative;
   flex: 1;
+  overflow: hidden;
 }
 
 #ambiente {
@@ -30,15 +35,25 @@ header {
   object-fit: cover;
 }
 
+/* 🔥 PISO CORRECTO */
 #piso {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 40%;
-  background-size: cover;
-  opacity: 0.8;
+  height: 45%;
+
+  background-size: 250px;
+  background-repeat: repeat;
+
+  opacity: 0.95;
+
+  /* EFECTO REAL */
+  transform: perspective(800px) rotateX(60deg);
+  transform-origin: bottom;
 }
 
+/* PANEL */
 #panel {
   width: 200px;
   padding: 10px;
@@ -46,32 +61,38 @@ header {
 
 #preview {
   width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
+/* FILTROS */
+#filtros {
+  padding: 10px;
+}
 
+#filtros button {
+  margin: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* CATALOGO */
+#catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  gap: 10px;
+  padding: 10px;
+}
+
+/* ITEM */
+.item {
+  border: 1px solid #ccc;
+  padding: 3px;
+}
 
 .item img {
-  width: 100px;
+  width: 100%;
   height: 100px;
   object-fit: cover;
   cursor: pointer;
-}
-#catalogo {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-    padding: 20px;
-}
-
-.producto {
-    border: 1px solid #ccc;
-    text-align: center;
-    padding: 5px;
-    background: #fff;
-}
-
-.producto img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
 }

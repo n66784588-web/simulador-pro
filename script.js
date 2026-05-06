@@ -1,53 +1,58 @@
-const catalogo = document.getElementById("catalogo");
-const preview = document.getElementById("preview");
-const nombre = document.getElementById("nombre");
-const piso = document.getElementById("piso");
+// CARGA INICIAL
+document.addEventListener("DOMContentLoaded", () => {
+  mostrarProductos();
+});
 
-let marcaActual = "todas";
+// CAMBIAR AMBIENTE
+function cambiarAmbiente(nombre) {
+  document.getElementById("ambiente").src =
+    `img/habitaciones/${nombre}.jpg`;
+}
 
 // MOSTRAR PRODUCTOS
-function mostrarProductos() {
+function mostrarProductos(lista = productos) {
+  const catalogo = document.getElementById("catalogo");
   catalogo.innerHTML = "";
 
-  productos.forEach(p => {
-    if (marcaActual === "todas" || p.marca === marcaActual) {
+  lista.forEach(p => {
+    const div = document.createElement("div");
+    div.classList.add("item");
 
-      const img = document.createElement("img");
+    const img = document.createElement("img");
 
-      // 🔥 RUTA CLAVE
-      img.src = `img/productos/${p.nombre}.jpg`;
+    // 🔥 RUTA PERFECTA
+    img.src = `img/productos/${p.marca}/${p.nombre}.jpg`;
 
-      img.onerror = () => {
-        console.log("No se encontró:", img.src);
-      };
+    // SI NO EXISTE LA IMAGEN
+    img.onerror = () => {
+      img.src = "img/no-image.jpg";
+    };
 
-      img.onclick = () => seleccionarProducto(p);
+    img.onclick = () => seleccionarProducto(p);
 
-      catalogo.appendChild(img);
-    }
+    div.appendChild(img);
+    catalogo.appendChild(div);
   });
 }
 
 // SELECCIONAR PRODUCTO
 function seleccionarProducto(p) {
-  nombre.innerText = p.nombre;
+  document.getElementById("nombre").innerText = p.nombre;
 
-  const ruta = `img/productos/${p.nombre}.jpg`;
+  const ruta = `img/productos/${p.marca}/${p.nombre}.jpg`;
 
-  preview.src = ruta;
-  piso.style.backgroundImage = `url(${ruta})`;
+  document.getElementById("preview").src = ruta;
+
+  document.getElementById("piso").style.backgroundImage =
+    `url('${ruta}')`;
 }
 
 // FILTRO
 function filtrarMarca(marca) {
-  marcaActual = marca;
-  mostrarProductos();
+  if (marca === "todas") {
+    mostrarProductos(productos);
+  } else {
+    const filtrados = productos.filter(p => p.marca === marca);
+    mostrarProductos(filtrados);
+  }
 }
-
-// CAMBIAR AMBIENTE
-function cambiarAmbiente(tipo) {
-  document.getElementById("ambiente").src = `img/habitaciones/${tipo}.jpg`;
-}
-
-// INICIO
-mostrarProductos();

@@ -21,7 +21,7 @@ function mostrarProductos(lista = productos) {
     const img = document.createElement("img");
 
     // 🔥 RUTA CORRECTA
-    img.src = `img/productos/${p.marca}/${p.nombre}.jpg`;
+    img.src = `img/productos/${p.nombre}/${p.marca}.jpg`;
 
     // SI NO EXISTE
     img.onerror = () => {

@@ -1,62 +1,113 @@
 document.addEventListener("DOMContentLoaded", () => {
-  cambiarAmbiente("sala");
-  mostrarProductos();
+    cambiarAmbiente("sala");
+    mostrarProductos();
 });
 
+// ===============================
 // CAMBIAR AMBIENTE
+// ===============================
 function cambiarAmbiente(nombre) {
-  const img = document.getElementById("ambiente");
-  img.src = `img/habitaciones/${nombre}.jpg`;
+
+    const ambiente = document.getElementById("ambiente");
+
+    ambiente.src = `img/habitaciones/${nombre}.jpg`;
 }
 
+// ===============================
 // MOSTRAR PRODUCTOS
+// ===============================
 function mostrarProductos(lista = productos) {
-  const catalogo = document.getElementById("catalogo");
-  catalogo.innerHTML = "";
 
-  lista.forEach(p => {
-    const div = document.createElement("div");
-    div.classList.add("item");
+    const catalogo = document.getElementById("catalogo");
 
-    const img = document.createElement("img");
+    catalogo.innerHTML = "";
 
-    // 🔥 RUTA CORRECTA
-    img.src = `img/productos/${p.nombre}/${p.marca}.jpg`;
+    lista.forEach(p => {
 
-    // SI NO EXISTE
-    img.onerror = () => {
-      img.src = "img/no-image.jpg";
-      console.error("No se encontró:", p.nombre);
-    };
+        const item = document.createElement("div");
 
-    img.onclick = () => seleccionarProducto(p);
+        item.classList.add("item");
 
-    div.appendChild(img);
-    catalogo.appendChild(div);
-  });
+        // ===============================
+        // IMAGEN
+        // ===============================
+        const img = document.createElement("img");
+
+        // 🔥 RUTA REAL CORREGIDA
+        const ruta = `img/pisos/${p.marca}/${p.nombre}.jpg`;
+
+        img.src = ruta;
+
+        // SI NO EXISTE
+        img.onerror = () => {
+
+            console.error("NO SE ENCONTRÓ:", ruta);
+
+            img.src = "img/no-image.jpg";
+        };
+
+        // CLICK
+        img.onclick = () => seleccionarProducto(p);
+
+        // ===============================
+        // NOMBRE
+        // ===============================
+        const texto = document.createElement("p");
+
+        texto.innerText = p.nombre;
+
+        // ===============================
+        // AGREGAR
+        // ===============================
+        item.appendChild(img);
+
+        item.appendChild(texto);
+
+        catalogo.appendChild(item);
+    });
 }
 
+// ===============================
 // SELECCIONAR PRODUCTO
+// ===============================
 function seleccionarProducto(p) {
-  const ruta = `img/productos/${p.marca}/${p.nombre}.jpg`;
 
-  document.getElementById("nombre").innerText = p.nombre;
-  document.getElementById("preview").src = ruta;
+    // 🔥 RUTA REAL
+    const ruta = `img/pisos/${p.marca}/${p.nombre}.jpg`;
 
-  const piso = document.getElementById("piso");
+    // NOMBRE
+    document.getElementById("nombre").innerText = p.nombre;
 
-  // 🔥 PROYECCIÓN REAL
-  piso.style.backgroundImage = `url('${ruta}')`;
-  piso.style.backgroundSize = "250px";
-  piso.style.backgroundRepeat = "repeat";
+    // PREVIEW
+    document.getElementById("preview").src = ruta;
+
+    // PISO
+    const piso = document.getElementById("piso");
+
+    piso.style.backgroundImage = `url('${ruta}')`;
+
+    piso.style.backgroundSize = "250px";
+
+    piso.style.backgroundRepeat = "repeat";
+
+    piso.style.backgroundPosition = "center";
+
+    piso.style.opacity = "0.95";
 }
 
-// FILTRO
+// ===============================
+// FILTROS
+// ===============================
 function filtrarMarca(marca) {
-  if (marca === "todas") {
-    mostrarProductos(productos);
-  } else {
-    const filtrados = productos.filter(p => p.marca === marca);
-    mostrarProductos(filtrados);
-  }
+
+    if (marca === "todas") {
+
+        mostrarProductos(productos);
+
+    } else {
+
+        const filtrados = productos.filter(p => p.marca === marca);
+
+        mostrarProductos(filtrados);
+    }
 }

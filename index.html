@@ -1,56 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Simulador</title>
-  <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+
+    <title>Simulador</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
 <header>
-  <h2>TU MARCA</h2>
+
+    <h2>TU MARCA</h2>
+
 </header>
 
+<!-- CONTENEDOR -->
 <div id="contenedor">
 
-  <!-- MENU -->
-  <div id="menu">
-    <button onclick="cambiarAmbiente('sala')">Sala</button>
-    <button onclick="cambiarAmbiente('baño')">Baño</button>
-    <button onclick="cambiarAmbiente('recamara')">Recámara</button>
-    <button onclick="cambiarAmbiente('terraza')">Terraza</button>
-    <button onclick="cambiarAmbiente('fachada')">Fachada</button>
-  </div>
+    <!-- MENU -->
+    <div id="menu">
 
-  <!-- ESCENA -->
-  <div id="escena">
-    <img id="ambiente" src="img/habitaciones/sala.jpg">
-    <div id="piso"></div>
-  </div>
+        <button onclick="cambiarAmbiente('sala')">Sala</button>
 
-  <!-- PANEL -->
-  <div id="panel">
-    <h3 id="nombre">Selecciona un modelo</h3>
-    <img id="preview">
-  </div>
+        <button onclick="cambiarAmbiente('bano')">Baño</button>
+
+        <button onclick="cambiarAmbiente('recamara')">Recámara</button>
+
+        <button onclick="cambiarAmbiente('terraza')">Terraza</button>
+
+        <button onclick="cambiarAmbiente('fachada')">Fachada</button>
+
+    </div>
+
+    <!-- ESCENA -->
+    <div id="escena">
+
+        <img id="ambiente" src="img/habitaciones/sala.jpg">
+
+        <div id="piso"></div>
+
+    </div>
+
+    <!-- PANEL -->
+    <div id="panel">
+
+        <h3 id="nombre">Selecciona un modelo</h3>
+
+        <img id="preview">
+
+    </div>
 
 </div>
 
 <!-- FILTROS -->
 <div id="filtros">
-  <button onclick="filtrarMarca('todas')">Todas</button>
-  <button onclick="filtrarMarca('vitromex')">Vitromex</button>
-  <button onclick="filtrarMarca('porcelanite')">Porcelanite</button>
-  <button onclick="filtrarMarca('nitropiso')">Nitropiso</button>
-  <button onclick="filtrarMarca('daltile')">Daltile</button>
-  <button onclick="filtrarMarca('mise')">Mise</button>
-  <button onclick="filtrarMarca('benadresa')">Benadresa</button>
+
+    <button onclick="filtrarMarca('todas')">Todas</button>
+
+    <button onclick="filtrarMarca('vitromex')">Vitromex</button>
+
+    <button onclick="filtrarMarca('porcelanite')">Porcelanite</button>
+
+    <button onclick="filtrarMarca('nitropiso')">Nitropiso</button>
+
+    <button onclick="filtrarMarca('daltile')">Daltile</button>
+
+    <button onclick="filtrarMarca('mise')">Mise</button>
+
+    <button onclick="filtrarMarca('benadresa')">Benadresa</button>
+
 </div>
 
 <!-- CATALOGO -->
 <div id="catalogo"></div>
 
 <script src="data.js"></script>
+
 <script src="script.js"></script>
 
 </body>
